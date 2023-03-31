@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .con{
+            background-color: rgb(245, 204, 150);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 25px;
+            width: 500px;
+        }
+        #input{
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            padding: 5px;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        #number{
+            width: 200px;
+            padding: 5px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 20px;
+            margin-top: 20px;
+
+        }
+        .btn{
+            text-align: start;
+            margin-left: 50px;
+        }
+        #btn{
+            width:70px;
+            font-size: 18px;
+            background-color: orangered;
+            color: aliceblue;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            padding: 5px;
+            user-select: none;
+        }
+        p{
+            font-family: cursive;
+            font-weight: 600;
+            font-size: 30px;
+            color: brown;
+
+        }
+        .result{
+            margin-top: 30px;
+            font-weight: 400;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="con">
+        <p>Number Checker</p>
+        <select id="input">
+            <option value="prime">Prime Number</option>
+            <option value="even">Even Number</option>
+            <option value="odd">Odd Number</option>
+        </select>
+        <div>
+            <input type="Number" placeholder="Enter a Number" id="number" >
+        </div>
+        <div class="btn">
+            <button id="btn">CHECK</button>
+        </div>
+        <div class="result"></div>
+    </div>
+
+    <script>
+        let input=document.getElementById('input')
+        let number=document.getElementById('number')
+        let res=document.querySelector('.result')
+        let btn=document.getElementById('btn')
+
+        btn.onclick=function(){
+            /* ================= even number ============ */
+
+            if (input.value=="even"){
+                if(number.value%2==0){
+                    res.innerHTML="True"
+                    res.style.color='green'
+                }
+                else{
+                    res.innerHTML="Flase"
+                    res.style.color='red'
+                }
+            }
+
+            /* ==================== odd number ============== */
+
+
+            if (input.value=="odd"){
+                if(number.value%2==1){
+                    res.innerHTML="True"
+                    res.style.color='green'
+                }
+                else{
+                    res.innerHTML="Flase"
+                    res.style.color='red'
+                }
+            }
+
+
+            /* ======================= prime number ==============*/
+
+            let isprime=true
+            if(input.value=="prime"){
+                if(number.value==1){
+                    res.innerHTML="1 is neither prime nor composite number."
+                    res.style.color='red'
+                }
+                else if(number.value>1){
+                    for(let i=2;i<number.value;i++){
+                        if(number.value%i==0){
+                            isprime=false
+                            break;
+                        }
+                    }
+                    if(isprime){
+                        res.innerHTML="True"
+                        res.style.color='green'
+                    }
+                    else{
+                        res.innerHTML="Flase"
+                        res.style.color='red'
+                    }
+                }
+                else{
+                    res.innerHTML='Negative Number can not be prime '
+                    res.style.color='red'
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>
